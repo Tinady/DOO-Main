@@ -2,21 +2,16 @@ import express from 'express';
 
 const router= express.Router();
 
-// Replace with your Payload CMS URL and API key
-const payloadUrl = 'http://localhost:3000/api';
-const apiKey = 'e5b0839bea8e4418fb6579f';
-
-
 router.post('/', async (req, res) => {
     const { email, password } = req.body;
   
     try {
       // Prepare Payload CMS login request with your credentials
-      const response = await axios.post(`${payloadUrl}/users/login`, {
+      const response = await axios.post(`${process.env.payloadUrl}/users/login`, {
         email,
         password,
         headers: {
-          Authorization: `Bearer ${apiKey}`, // Include API key in header
+          Authorization: `Bearer ${process.env.apiKey}`, // Include API key in header
         },
       });
   
