@@ -1,9 +1,8 @@
 const express = require('express');
-const axios = require( 'axios');
 const bodyParser = require('body-parser');
 const app = express();
-import auth from "./routes/auth";
-import password from "./routes/changepassword";
+const auth = require ( "./routes/auth");
+const password = require ("./routes/changepassword");
 
 const port = process.env.PORT || 5000; // Use environment variable for port
 app.use(bodyParser.json());

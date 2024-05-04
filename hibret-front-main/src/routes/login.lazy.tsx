@@ -35,12 +35,13 @@ const Login = () => {
     const { email, password } = formData;
     const res = await performLogin({ email, password });
     setSession(res);
+    console.log(formData)
   };
 
   return (
-    <div>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+    
+        <div className="flex justify-center items-center fixed top-0 left-0 right-0 bottom-0 bg-white  z-50 ">
+        <div className="w-80  h-96 gap-4  flex flex-col">
           {isError && (
             <div
               className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
@@ -60,91 +61,80 @@ const Login = () => {
             </div>
           )}
 
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account :status
-          </h2>
-        </div>
+<h1 className="w-full h-10 font-ralewa font-bold text-3xl  text-center bg-gradient-to-r text-transparent bg-clip-text from-teal-500 to-purple-900">
+          Login
+        </h1>
+        <h3 className="w-full   text-center font-urbanist font-normal text-base text-gray-400">
+          Sign in to your account.
+        </h3>
+      
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        
           <form
-            className="space-y-6"
+            className="w-full gap-4  flex flex-col"
             action="#"
             method="POST"
             onSubmit={handleLogin}
           >
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+             <input
+         id="email"
+        name="email"
+        type="email"
+        autoComplete="email"
+        required
+        value={formData.email}
+        onChange={handleChange}
+          placeholder="   Enter Your Email"
+          className="w-full h-10 rounded-md border p-2  bg-white border-gray-300 placeholder:text-xs"
+        />
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+<input
+          type="password" id="password"
+          name="password"
+          autoComplete="current-password"
+          required
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Confirm New Password"
+          className="w-full h-10 rounded-md border p-4  bg-white border-gray-300 placeholder:text-xs"
+        />
 
-            <div>
+<div className="flex w-full h-4 items-center text-sm px-3 justify-between">
+          <div className="flex gap-1 items-center m-2  ">
+            <input
+              
+              type="checkbox"
+              className="w-4 h-3 text-blue-800 "
+            />
+            <label className="text-sm font-medium text-gray-400">
+              Remember me
+            </label>
+          </div>
+          <a href="" className="text-purple-900">
+            Forgot Password?
+          </a>
+        </div>
+
+            
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="bg-teal-500 text-white h-10   rounded-md"
               >
-                Sign in
+                Login
               </button>
-            </div>
+
+              <div className="text-center text-sm text-gray-400 mt-2">
+          Dont have an account?{" "}
+          <a href="" className="text-purple-900">
+            Register Now{" "}
+          </a>
+        </div>
+            
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Start a 14 day free trial
-            </a>
-          </p>
+          </div>
         </div>
-      </div>
-    </div>
+      
+  
   );
 };
